@@ -5,3 +5,4 @@ numpy
 geopandas
 shapely
 fastkml
+openpyxl
