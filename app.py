@@ -135,7 +135,7 @@ if st.button("Process Files"):
         others_rt_rw_net_df.reset_index(drop=True, inplace=True)
 
         st.write("All processes are finished.")
-        st.write("===============================================")
+        st.write("==============================================================================================")
         st.session_state.signal_points_for_improvement_df = signal_points_for_improvement_df
         st.session_state.telkomsel_rt_rw_net_df = telkomsel_rt_rw_net_df
         st.session_state.others_rt_rw_net_df = others_rt_rw_net_df
