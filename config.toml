@@ -3,6 +3,3 @@ toolbarMode = "viewer"
 
 [server]
 maxUploadSize = 500
-
-[theme]
-base = "dark"
