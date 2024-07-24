@@ -160,7 +160,7 @@ if st.session_state.processed:
         
         # Save the GeoDataFrame to a GeoPackage
         geopackage_buffer = BytesIO()
-        geo_df.to_file(geopackage_buffer, driver="GPKG")
+        geo_df.to_file(geopackage_buffer, driver="GPKG", layer='ODP')
         geopackage_buffer.seek(0)
         st.write("Done.")
 
@@ -179,7 +179,7 @@ if st.session_state.processed:
         
         # Save the GeoDataFrame to a GeoPackage
         geopackage_buffer = BytesIO()
-        geo_df.to_file(geopackage_buffer, driver="GPKG")
+        geo_df.to_file(geopackage_buffer, driver="GPKG", layer='Radius_500m')
         geopackage_buffer.seek(0)
         st.write("Done.")
 
