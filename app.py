@@ -30,7 +30,7 @@ ookla_file = st.file_uploader("Upload Ookla Excel Dataset:", type=["xlsx"])
 odp_file = st.file_uploader("Upload ODP Excel Dataset:", type=["xlsx"])
 
 # Add a slider for the user to set the latency threshold
-latency_threshold = st.slider("Set the latency threshold (in ms):", min_value=0, max_value=500, value=55)
+latency_threshold = st.slider("Set the latency threshold (in ms):", min_value=0, max_value=200, value=55)
 
 if 'processed' not in st.session_state:
     st.session_state.processed = False
@@ -51,9 +51,9 @@ if st.button("Process Files"):
 
         # Filtering and Cleaning Ookla Dataset
         st.write("Filtering and cleaning Ookla dataset...")
-        st.write('Checking attributes: "DESA", "KECAMATAN", "KABUPATEN", "provider", "attr_location_latitude", "attr_location_longitude", "val_multiserver_latency_ms"')
-        filtered_signal_df = signal_df[["DESA", "KECAMATAN", "KABUPATEN", "provider", "attr_location_latitude", "attr_location_longitude", "val_multiserver_latency_ms"]]
-        cleaned_signal_df = filtered_signal_df.dropna(subset=["val_multiserver_latency_ms"])
+        st.write('Checking attributes: "DESA", "KECAMATAN", "KABUPATEN", "provider", "attr_location_latitude", "attr_location_longitude", "val_latency_iqm_ms"')
+        filtered_signal_df = signal_df[["DESA", "KECAMATAN", "KABUPATEN", "provider", "attr_location_latitude", "attr_location_longitude", "val_latency_iqm_ms"]]
+        cleaned_signal_df = filtered_signal_df.dropna(subset=["val_latency_iqm_ms"])
         cleaned_signal_df.reset_index(drop=True, inplace=True)
         st.write("Clear.")
 
@@ -64,8 +64,8 @@ if st.button("Process Files"):
         filtered_odp_df.reset_index(drop=True, inplace=True)
         st.write("Clear.")
 
-        # Filter the signal points with val_multiserver_latency_ms over latency_threshold
-        filtered_signals = cleaned_signal_df[cleaned_signal_df["val_multiserver_latency_ms"] > latency_threshold]
+        # Filter the signal points with val_latency_iqm_ms over latency_threshold
+        filtered_signals = cleaned_signal_df[cleaned_signal_df["val_latency_iqm_ms"] > latency_threshold]
 
         # Create KDTree for ODP locations
         odp_locations = filtered_odp_df[["LATITUDE", "LONGITUDE"]].values
@@ -84,7 +84,7 @@ if st.button("Process Files"):
             signal_provider = signal["provider"]
             signal_lat = signal["attr_location_latitude"]
             signal_lon = signal["attr_location_longitude"]
-            signal_latency = signal["val_multiserver_latency_ms"]
+            signal_latency = signal["val_latency_iqm_ms"]
             
             # Search for ODPs within 500 meters and 1 kilometer
             odp_in_500m = False
