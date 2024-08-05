@@ -23,7 +23,7 @@ def haversine(lat1, lon1, lat2, lon2):
     return EARTH_RADIUS_KM * c
 
 st.title("RT/RW Net Identification")
-st.header("made by Juventius Kriswijanarko \([LinkedIn](https://www.linkedin.com/in/juventius-kriswijanarko/)\)", divider=True)
+st.subheader("made by Juventius Kriswijanarko \([LinkedIn](https://www.linkedin.com/in/juventius-kriswijanarko/)\)", divider=True)
 st.markdown("*Please contact the above person for feedbacks and suggestions.")
 st.markdown("*[Sample Datasets](https://drive.google.com/drive/folders/1loDyXbKmJ31iNdCnSLI1wIkhD_8nstZS?usp=sharing) (access granted for erickhimura@gmail.com)")
 
