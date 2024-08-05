@@ -25,7 +25,7 @@ def haversine(lat1, lon1, lat2, lon2):
 st.title("RT/RW Net Identification")
 st.markdown("made by Juventius Kriswijanarko \([LinkedIn](https://www.linkedin.com/in/juventius-kriswijanarko/)\)")
 st.markdown("*Please contact the above person for feedbacks and suggestions.")
-st.markdown("*[Sample Datasets](https://drive.google.com/drive/folders/1loDyXbKmJ31iNdCnSLI1wIkhD_8nstZS?usp=sharing) (current access for erickhimura@gmail.com)")
+st.markdown("*[Sample Datasets](https://drive.google.com/drive/folders/1loDyXbKmJ31iNdCnSLI1wIkhD_8nstZS?usp=sharing) (access granted for erickhimura@gmail.com)")
 
 ookla_file = st.file_uploader("Upload Ookla Excel Dataset:", type=["xlsx"])
 odp_file = st.file_uploader("Upload ODP Excel Dataset:", type=["xlsx"])
