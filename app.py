@@ -28,6 +28,9 @@ st.markdown("made by Juventius Kriswijanarko \([LinkedIn](https://www.linkedin.c
 ookla_file = st.file_uploader("Upload Ookla Excel Dataset:", type=["xlsx"])
 odp_file = st.file_uploader("Upload ODP Excel Dataset:", type=["xlsx"])
 
+# Add a slider for the user to set the latency threshold
+latency_threshold = st.slider("Set the latency threshold (in ms):", min_value=0, max_value=200, value=55)
+
 if 'processed' not in st.session_state:
     st.session_state.processed = False
 
@@ -60,8 +63,8 @@ if st.button("Process Files"):
         filtered_odp_df.reset_index(drop=True, inplace=True)
         st.write("Clear.")
 
-        # Filter the signal points with val_multiserver_latency_ms over 55
-        filtered_signals = cleaned_signal_df[cleaned_signal_df["val_multiserver_latency_ms"] > 55]
+        # Filter the signal points with val_multiserver_latency_ms over latency_threshold
+        filtered_signals = cleaned_signal_df[cleaned_signal_df["val_multiserver_latency_ms"] > latency_threshold]
 
         # Create KDTree for ODP locations
         odp_locations = filtered_odp_df[["LATITUDE", "LONGITUDE"]].values
