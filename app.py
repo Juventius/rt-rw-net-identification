@@ -24,12 +24,13 @@ def haversine(lat1, lon1, lat2, lon2):
 
 st.title("RT/RW Net Identification")
 st.markdown("made by Juventius Kriswijanarko \([LinkedIn](https://www.linkedin.com/in/juventius-kriswijanarko/)\)")
+st.markdown("*Please contact the above person for feedbacks and suggestions.*")
 
 ookla_file = st.file_uploader("Upload Ookla Excel Dataset:", type=["xlsx"])
 odp_file = st.file_uploader("Upload ODP Excel Dataset:", type=["xlsx"])
 
 # Add a slider for the user to set the latency threshold
-latency_threshold = st.slider("Set the latency threshold (in ms):", min_value=0, max_value=200, value=55)
+latency_threshold = st.slider("Set the latency threshold (in ms):", min_value=0, max_value=500, value=55)
 
 if 'processed' not in st.session_state:
     st.session_state.processed = False
